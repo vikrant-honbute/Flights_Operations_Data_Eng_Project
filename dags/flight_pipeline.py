@@ -11,6 +11,7 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from scripts.bronze_ingest import run_bronze_ingestion
 from scripts.silver_tranformer import run_silver_transform
+from scripts.gold_aggregate import run_gold_aggregate
 default_args = {
     'owner': 'airflow',
     'retries': 1,
@@ -38,4 +39,10 @@ with DAG(
         
     )
 
-    bronze >> silver
+    gold = PythonOperator(
+        task_id="gold_aggregate",
+        python_callable=run_gold_aggregate,
+        
+    )
+
+    bronze >> silver >> gold
