@@ -136,11 +136,6 @@ Contributions are welcome. Please open issues for bugs/feature requests and subm
 ---
 
 ## License
-Specify a license (e.g., MIT) by adding a LICENSE file to this repository.
+MIT
 
 ---
-
-## Questions you might want to ask next
-- Which columns and data types should the gold table use in Snowflake (and what primary keys/merge keys do we want)?
-- Do you want persistent storage in cloud object storage (S3/GCS) instead of local filesystem paths used by the scripts?
-- Should the pipeline include enrichment steps (e.g., reverse-geocoding coordinates, mapping to airports, or joining with schedules/airline metadata)?
