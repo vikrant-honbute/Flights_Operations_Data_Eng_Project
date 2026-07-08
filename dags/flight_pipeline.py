@@ -12,6 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from scripts.bronze_ingest import run_bronze_ingestion
 from scripts.silver_tranformer import run_silver_transform
 from scripts.gold_aggregate import run_gold_aggregate
+from scripts.load_gold_to_snowflake import load_gold_to_snowflake
 default_args = {
     'owner': 'airflow',
     'retries': 1,
@@ -44,5 +45,7 @@ with DAG(
         python_callable=run_gold_aggregate,
         
     )
+
+    
 
     bronze >> silver >> gold
