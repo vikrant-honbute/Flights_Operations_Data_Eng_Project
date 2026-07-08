@@ -10,7 +10,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from scripts.bronze_ingest import run_bronze_ingestion
-
+from scripts.silver_tranformer import run_silver_transform
 default_args = {
     'owner': 'airflow',
     'retries': 1,
@@ -30,3 +30,12 @@ with DAG(
         python_callable=run_bronze_ingestion,
         
     )
+
+
+    silver = PythonOperator(
+        task_id="silver_transform",
+        python_callable=run_silver_transform,
+        
+    )
+
+    bronze >> silver
